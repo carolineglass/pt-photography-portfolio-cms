@@ -16,6 +16,13 @@ export default defineConfig({
         S.list()
           .title('Content')
           .items([
+            // About Page
+            S.listItem()
+              .title('About Page')
+              .child(S.document().schemaType('about').documentId('about-page')),
+
+            S.divider(),
+
             // Categories management
             S.listItem()
               .title('Categories')
@@ -46,7 +53,7 @@ export default defineConfig({
             // All other document types
             ...S.documentTypeListItems().filter((listItem) => {
               const id = listItem.getId()
-              return id !== undefined && !['photo', 'category'].includes(id)
+              return id !== undefined && !['photo', 'category', 'about'].includes(id)
             }),
           ]),
     }),
