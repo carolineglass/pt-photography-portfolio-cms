@@ -8,9 +8,9 @@ export default defineType({
     defineField({
       name: 'content',
       title: 'About Text',
-      type: 'text',
+      type: 'array',
+      of: [{type: 'block'}],
       description: 'Tell your story',
-      rows: 8,
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -68,9 +68,9 @@ export default defineType({
       media: 'image',
     },
     prepare(selection) {
-      const {title, media} = selection
+      const {media} = selection
       return {
-        title: title ? title.substring(0, 50) + '...' : 'About Page',
+        title: 'About Page',
         media: media,
       }
     },
